@@ -105,9 +105,10 @@ function getPasswordOptions() {
   ) {
     confirm("Password length does not meet the criteria. Try again.");
     var password_length = prompt("Choose your password length. It must be between 10-64 characters.");
+    var password_length = parseInt(password_length);
   }
 
-}
+
 // Initialise all choices to 'n' for no.
   var password_lowercase = "n";
   var password_uppercase = "n";
@@ -176,6 +177,7 @@ function getPasswordOptions() {
 
   return (password_criteria_input);
 
+}
 
 // Function for getting a random array element 
 function getRandom(characters_selected, max_length) {
