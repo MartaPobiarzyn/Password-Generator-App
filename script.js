@@ -96,8 +96,16 @@ function getPasswordOptions() {
 
   var password_length = parseInt(password_length);
 
-  while (//(password_length < 10 || password_length > 64) && 
-  !Number.isInteger(password_length)) {
+
+  while (
+    !(
+      password_length >= 10 &&
+      password_length <= 64 &&
+      Number.isInteger(password_length)
+    )
+    // (password_length >= 10 || password_length <= 64) && 
+    // !(Number.isInteger(password_length))
+  ) {
     confirm("Password length does not meet the criteria. Try again.");
     var password_length = prompt("Choose your password length. It must be between 10-64 characters.");
   }
@@ -213,7 +221,7 @@ var characters_selected = characters_selected.filter(element => {
   return element !== null
 })
 
-  //*create empty array you'll push your values into?*
+  //*create empty array you'll push your values into*
   var password_characters = [];
 
   //must return the password
@@ -221,7 +229,11 @@ var characters_selected = characters_selected.filter(element => {
     var password_character = getRandom(characters_selected, characters_selected.length);
     password_characters.push(password_character);
   } 
-  return(password_characters);
+
+  var password_characters_no_commas = password_characters.join('');
+  return(password_characters_no_commas);
+
+
 
 }
 
